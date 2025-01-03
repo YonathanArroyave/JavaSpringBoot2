@@ -1,4 +1,4 @@
-package com.aluracursos.screenmacths.model;
+package com.aluracursos.screenmacths.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

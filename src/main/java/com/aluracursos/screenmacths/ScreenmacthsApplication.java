@@ -4,9 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.aluracursos.screenmacths.model.ConvierteDatos;
 import com.aluracursos.screenmacths.model.DatosSerie;
 import com.aluracursos.screenmacths.service.ConsumoAPI;
+import com.aluracursos.screenmacths.service.ConvierteDatos;
 
 @SpringBootApplication
 public class ScreenmacthsApplication implements CommandLineRunner{
