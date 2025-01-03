@@ -1,17 +1,10 @@
 package com.aluracursos.screenmacths;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.aluracursos.screenmacths.model.DatosEpisodio;
-import com.aluracursos.screenmacths.model.DatosSerie;
-import com.aluracursos.screenmacths.model.DatosTemporadas;
-import com.aluracursos.screenmacths.service.ConsumoAPI;
-import com.aluracursos.screenmacths.service.ConvierteDatos;
+import com.aluracursos.screenmacths.principal.Principal;
 
 @SpringBootApplication
 public class ScreenmacthsApplication implements CommandLineRunner {
@@ -22,25 +15,8 @@ public class ScreenmacthsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        var consumoAPI = new ConsumoAPI();
-        var json = consumoAPI.obtenerDatos("http://www.omdbapi.com/?t=breaking+bad&apikey=cbbae2fe");
-        System.out.println(json);
-        ConvierteDatos conversor = new ConvierteDatos();
-        var datos = conversor.obtenerDatos(json, DatosSerie.class);
-        System.out.println(datos);
-
-        json = consumoAPI.obtenerDatos("https://www.omdbapi.com/?t=breaking+bad&season=1&episode=1&apikey=cbbae2fe");
-        DatosEpisodio episodios = conversor.obtenerDatos(json, DatosEpisodio.class);
-        System.out.println(episodios);
-
-        List<DatosTemporadas> temporadas = new ArrayList<>();
-        for (int i = 1; i <= datos.totalDeTemporadas(); i++) {
-            json = consumoAPI.obtenerDatos("https://www.omdbapi.com/?t=breaking+bad&season="+i+"&apikey=cbbae2fe");
-            var datosTemporadasDatosTemporadas = conversor.obtenerDatos(json, DatosTemporadas.class);
-            temporadas.add(datosTemporadasDatosTemporadas);
-            
-        }
-            temporadas.forEach(System.out::println);
+        Principal principal = new Principal();
+        principal.muestraElMenu();
     }
 
 }
