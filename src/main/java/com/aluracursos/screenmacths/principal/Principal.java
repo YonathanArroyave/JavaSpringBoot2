@@ -1,9 +1,12 @@
 package com.aluracursos.screenmacths.principal;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
+import com.aluracursos.screenmacths.model.DatosEpisodio;
 import com.aluracursos.screenmacths.model.DatosSerie;
 import com.aluracursos.screenmacths.model.DatosTemporadas;
 import com.aluracursos.screenmacths.service.ConsumoAPI;
@@ -41,6 +44,20 @@ public class Principal {
             //         System.out.println("Episodio: "+j+" "+episodiosTemporadas.get(j).titulo());
             //     }
             // }
-            temporadas.forEach(t ->t.episodios().forEach(e -> System.out.println(e.titulo()))); // esto reemplaz los dos ciclos de arriba
+            //temporadas.forEach(t ->t.episodios().forEach(e -> System.out.println(e.titulo()))); // esto reemplaz los dos ciclos de arriba
+
+            //convertir todas las informaciones a una lista de datoepisodio
+            List<DatosEpisodio> datosEpisodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream())
+                .collect(Collectors.toList());
+                 //.toList(); //crea una lista inmutable
+
+                //Top 5 episoios
+                System.out.println("Top 5 episodios");
+                datosEpisodios.stream()
+                    .filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))//excluyo los que no tiene evaluacaion
+                    .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed())//evaluo los mejores evaluados
+                    .limit(5)//limito a 5 resultados
+                    .forEach(System.out::println);//muestro
     }
 }

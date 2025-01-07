@@ -4,7 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.aluracursos.screenmacths.principal.EjemploStream;
+import com.aluracursos.screenmacths.principal.Principal;
 
 @SpringBootApplication
 public class ScreenmacthsApplication implements CommandLineRunner {
@@ -15,11 +15,11 @@ public class ScreenmacthsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Principal principal = new Principal();
-        // principal.muestraElMenu();
+         Principal principal = new Principal();
+         principal.muestraElMenu();
 
-        EjemploStream ejemploStream = new EjemploStream();
-        ejemploStream.muestraEjemplo();
+        // EjemploStream ejemploStream = new EjemploStream();
+        // ejemploStream.muestraEjemplo();
 
     }
 
