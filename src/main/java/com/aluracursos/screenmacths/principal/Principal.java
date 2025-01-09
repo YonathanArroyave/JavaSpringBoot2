@@ -16,6 +16,7 @@ public class Principal {
     private ConvierteDatos conversor = new ConvierteDatos();
     private final String URL_BASE = "http://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=cbbae2fe";
+    private List<DatosSerie> datosSeries = new ArrayList<>();
 
      public void muestraElMenu() {
         var opcion = -1;
@@ -38,6 +39,9 @@ public class Principal {
                 case 2:
                     buscarEpisodioPorSerie();
                     break;
+                case 3:
+                        mostrarSeriesBuscadas();
+                        break;
 
                 case 0:
                     System.out.println("Cerrando la aplicación...");
@@ -70,8 +74,12 @@ public class Principal {
     }
     private void buscarSerieWeb() {
         DatosSerie datos = getDatosSerie();
+        datosSeries.add(datos);
         System.out.println(datos);
     }
-//hola 
+
+    private void mostrarSeriesBuscadas() {
+        datosSeries.forEach(System.out::println);
+    }
 
 }
