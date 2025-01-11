@@ -2,8 +2,6 @@ package com.aluracursos.screenmacths.model;
 
 import java.util.OptionalDouble;
 
-import com.aluracursos.screenmacths.ConsultaChatGPT;
-
 public class Serie {
     private String titulo;
     private Integer totalTemporadas;
@@ -19,7 +17,7 @@ public class Serie {
         this.poster = datosSerie.poster();
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());
         this.actores = datosSerie.actores();
-        this.sinopsis = ConsultaChatGPT.obtenerTraduccion(datosSerie.sinopsis()) ;
+        this.sinopsis = datosSerie.sinopsis();
     }
     @Override
     public String toString() {
